@@ -1,0 +1,11 @@
+#container {
+    display: flex;
+    flex-direction: column;
+}
+.cellRow{
+    display: flex;
+}
+.cell{
+    background-color: lightgreen;
+    border-style:outset;
+}
