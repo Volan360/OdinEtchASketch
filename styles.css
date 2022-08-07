@@ -1,11 +1,27 @@
+body,html{
+    height: 100%;
+    width: 100%;
+    padding: none;
+    margin: none;
+}
 #container {
     display: flex;
-    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
 }
-.cellRow{
+#grid {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-style: solid;
+    height: 720px;
+    width: 720px;
 }
 .cell{
+    padding: none;
+    margin: none;
     background-color: lightgreen;
-    border-style:outset;
+    border: 1px;
+    border-style: solid;
 }

@@ -1,21 +1,32 @@
-let container = document.getElementById("container")
-container.style['height'] = '100%'
-container.style['width'] = '100%'
-for(i=0; i < 16; ++i)
+row_counts = [10,16,18]
+function make_grid(grid_size, cell_size)
 {
-    let cellRow = document.createElement("div")
-    cellRow.classList.add("cellRow")
-    let height = Math.ceil(parseInt(container.style['width'])/16).toString()
-    cellRow.style['height'] = height
-    cellRow.style['width'] = container.style['width']
-    for(j=0; j < 16; ++j)
+    cell_size_with_border = cell_size + 2
+    let grid = document.getElementById("grid")
+    grid.replaceChildren()
+    grid.style['height'] = grid_size.toString() + 'px'
+    grid.style['width'] = grid_size.toString() + 'px'
+    num_rows = grid.clientHeight / cell_size_with_border
+    for(i=0; i < num_rows; ++i)
     {
-        let cell = document.createElement("div")
-        cell.classList.add("cell")
-        cell.style['height'] = cellRow.style['height']
-        let width = Math.ceil(parseInt(cellRow.style['width'])/16).toString()
-        cell.style['width'] = width
-        cellRow.appendChild(cell)
+        for(j=0; j < num_rows; ++j)
+        {
+            let cell = document.createElement('div')
+            cell.classList.add('cell')
+            cell.style['height'] = cell_size.toString() + 'px'
+            cell.style['width'] = cell_size.toString() + 'px'
+            grid.appendChild(cell)
+        }
     }
-    container.appendChild(cellRow)
 }
+make_grid(720, 18)
+let size_buttons = document.getElementById("size_buttons")
+for(i of row_counts){
+    let button = document.createElement("button")
+    button.textContent = i.toString() + 'x' + i.toString()
+    button.onclick = () => make_grid(720, parseInt(button.textContent))
+    size_buttons.appendChild(button)
+}
+
+// container.style['width'] = i.toString() + 'px'
+// container.style['height'] = j.toString() + 'px'
